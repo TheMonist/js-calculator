@@ -14,6 +14,8 @@ const operators = document.querySelectorAll('.operator')
 equal.addEventListener('click', () => {
     if (currentNum != "" && previousNum != "") {
         operate();
+        previousCalc.textContent = "";
+        currentCalc.textContent = previousNum;
     }
 });
 
@@ -48,7 +50,7 @@ function clearCalc() {
 }
 
 function handleNumber(number) {
-    if (previousNum != "" && currentNum === "") {
+    if (previousNum != "" && currentNum === "" && operator === "") {
         previousNum = "";
         currentCalc.textContent = currentNum;
     }
@@ -80,12 +82,12 @@ function operatorCheck(text) {
 }
 
 function operate() {
-   previousNum = number(previousNum);
-   currentNum = number(currentNum);
+   previousNum = Number(previousNum);
+   currentNum = Number(currentNum);
 
-  if (operator === "*"){
-    return previousNum *= currentNum;
-  } else if (operator === "/") {
+  if (operator === "x"){
+    previousNum = previousNum * currentNum;
+  } else if (operator === "÷") {
     if (currentNum <= 0) {
         previousNum = "Error";
         previousCalc.textContent = "";
@@ -94,17 +96,17 @@ function operate() {
         displayResults();
         return;
     }
-    return previousNum /= currentNum;
+    previousNum = previousNum / currentNum;
   } else if (operator === "+") {
-    return previousNum += currentNum;
+    previousNum = previousNum + currentNum; 
   }
   else if (operator === "-") {
-    return previousNum -= currentNum;
+    previousNum = previousNum - currentNum;
   }
 
   previousNum = roundNum(previousNum);
   previousNum = previousNum.toString();
-  displayResults()
+  displayResults();
 }
 
 function roundNum(num) {
@@ -112,13 +114,13 @@ function roundNum(num) {
 }
 
 function displayResults() {
-    previousCalc.textContent = "";
-    operator = "";
     if (previousNum.length <= 11) {
         currentCalc.textContent = previousNum;
     } else {
         currentCalc.textContent = previousNum.slice(0, 11) + "...";
     }
+    operator = "";
+    currentNum = "";
 }
 
 function addDecimal() {

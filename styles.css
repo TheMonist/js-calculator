@@ -4,56 +4,96 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Inconsolata', monospace;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://cdn.pixabay.com/photo/2021/06/02/18/04/abc-6305112_1280.jpg);
+    background-size: contain;
+}
+
+header {
+    display: flex;
 }
 
 h1 {
     text-align: center;
+    flex: 1;
+    color: #FFFFFF;
+    font-size: 1em;
 }
 .container {
     display: flex;
     justify-content: center;
-    height: 425px;
-    width: 425px;
+    height: 675px;
+    width: 300px;
     flex-direction: column;
-    border: 5px solid #000000;
+    border: 5px solid #034d8a;
     border-radius: 14px;
     background-color: #3363c5;
+    box-shadow: 2px 2px #3363c5;
 }
 
 .calcDisplay {
-    display:flex;
-    justify-content:flex-end;
-    align-items: center;
-    background-color: #FFFFFF;
-    border: 5px solid #000000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
+    background-color: #D3D3D3;
+    border: 5px solid #585858;
     text-align: right;
     padding-right: 10px;
-}
-
-.calcButtons {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 6px;
-    align-items: center;
-    justify-content: center;
+    height: 75px;
+    border-radius: 2px;
+    box-shadow: 1px 1px #000000;
 }
 
 button {
     text-decoration: none;
+    width: 100%;
     padding: 10px;
     text-align: center;
     display: inline-block;
     margin: 4px 2px;
     border-radius: 12px;
     color: #417df6;
-    box-shadow: 0 5px #999;
+    box-shadow: 1px 1px #999;
+    font-weight: bold;
 }
 
-.operator {
+.calcButtons {
+    display: grid;
+    gap: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.bottom {
+    display: grid; 
+    justify-self: stretch;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 15px 15px; 
+    grid-template-areas: 
+      ". . . ."
+      ". . . ."
+      ". . . ."; 
+}
+
+
+
+.operator, .equal {
     background-color: #FF0000;
+    color: #FFFFFF;
 }
 
-.numbers {
+.numbers, .decimal {
     background-color: #FFFFFF;
 }
 
@@ -66,10 +106,12 @@ button:active {
     box-shadow: 0 3px #666;
 }
 
-.top {
-    grid-column-start: span 3;
-}
-
-.bottom {
-    grid-column-start: span 3;
+footer {
+    display: flex;
+    flex-direction: row;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 0.875em;
 }
