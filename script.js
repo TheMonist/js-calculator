@@ -39,7 +39,6 @@ operators.forEach((btn) => {
 
 decimal.addEventListener('click', addDecimal);
 
-equal.addEventListener('click', operate);
 
 function clearCalc() {
     currentNum = "";
@@ -67,10 +66,11 @@ function handleOperator (op) {
     } else if(currentNum === "") {
         operatorCheck(op);
     } else {
-        calculate();
+        operate();
         operator = op;
         currentCalc.textContent = "0";
         previousCalc.textContent = previousNum + " " + operator;
+        currentCalc.textContent = "";
     }
 }
 
@@ -78,7 +78,7 @@ function operatorCheck(text) {
     operator = text;
     previousCalc.textContent = previousNum + " " + operator;
     currentCalc.textContent = "0";
-    currentNum = ""
+    currentNum = "";
 }
 
 function operate() {
@@ -119,6 +119,7 @@ function displayResults() {
     } else {
         currentCalc.textContent = previousNum.slice(0, 11) + "...";
     }
+    previousCalc.textContent = "";
     operator = "";
     currentNum = "";
 }
@@ -135,7 +136,7 @@ function handleDelete() {
         currentNum = currentNum.slice(0, -1);
         currentCalc.textContent = currentNum;
         if (currentNum === "") {
-            currentNum = "0"
+            currentNum = "0";
         }
     }
     if (currentNum === "" && previousNum != "" && operator === "") {
@@ -165,6 +166,6 @@ function keyBoard(e) {
         handleDecimal();
     }
     if (e.key === "Backspace") {
-        handleDelete
+        handleDelete();
     }
 }

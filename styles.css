@@ -46,6 +46,7 @@ h1 {
     height: 75px;
     border-radius: 2px;
     box-shadow: 1px 1px #000000;
+    font-family: 'VT323', monospace;
 }
 
 button {
